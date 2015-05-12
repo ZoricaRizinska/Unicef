@@ -36,8 +36,8 @@
   </div>
   <div class="box-body">
     <table ng-table="tableParams" class="table table-bordered">
-      <tr ng-repeat="user in $data">
-        <td data-title="'Опис'">
+      <tr ng-repeat="user in $data" >
+        <td data-title="'Опис'" header-class="headerTable">
           <span ng-if="!user.edit">{{user.Description}}</span>
           <div ng-if="user.edit"><input class="form-control" type="text" ng-model="user.Description" /></div>
         </td>
