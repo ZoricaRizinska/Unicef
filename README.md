@@ -1,4 +1,4 @@
-# unicef
+# Unicef
 
 This is the front end code for Unicef App
 
@@ -16,7 +16,6 @@ Finally you can run grunt serve which should open a browser to the app. (localho
 
 Running `grunt test` will run the unit tests with karma.
 
-## Instruction for running the documentation app locally
+## Documentation app locally
 
 Run 'grunt docs' and docs apps will be running under port 9002.
-We can now navigate thorough documentation against various elements in the front end.
