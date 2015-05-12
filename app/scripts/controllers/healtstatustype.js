@@ -37,7 +37,12 @@
 
   });
 
-
+  /**
+   * @ngdoc method
+   * Delete item from healthStatusType
+   * @param  {int} id id of the item
+   * @return {status}    status
+   */
   $scope.deleteItem = function(id){
 
     $http.delete('http://localhost:58401/api/Test/'+id).

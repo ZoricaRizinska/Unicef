@@ -18,13 +18,13 @@
         <h3 class="box-title">Додади запис</h3>
       </div>
       <div class="box-body">
-<form>
+<form name="form">
        <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
-        <input type="text" class="form-control" ng-model="description" placeholder="Внеси опис">
+        <input type="text" required class="form-control" ng-model="description" placeholder="Внеси опис">
       </div>
       <br>
-    <button class="btn  btn-success pull-right" type="submit" ng-click="insertItem(description)"><i class="fa fa-floppy-o"> </i> Зачувај</button></form>
+    <button class="btn  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(description)"><i class="fa fa-floppy-o"> </i> Зачувај</button></form>
   </div><!-- /.box-body -->
 
 </div><!-- /.box -->
@@ -48,7 +48,7 @@
         <td data-title="'Акции'" width="150" class="text-center">
           <a ng-if="!user.edit" href="" class="btn btn-primary btn-xs" ng-click="user.edit = true">Измени</a>
           <a ng-if="user.edit" href="" class="btn btn-success btn-xs" ng-click="user.edit = false; updateItem(user)">Зачувај</a>
-          <a href="" class="btn btn-danger btn-xs" ng-click="deleteItem(user.HealthStatusTypeId)">Избриши</a>
+          <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{user.Description}} ?"? ng-really-click="deleteItem(user.HealthStatusTypeId)" >Избриши</a>
         </td>
       </tr>
     </table>
