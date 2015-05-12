@@ -18,13 +18,13 @@
         <h3 class="box-title">Додади запис</h3>
       </div>
       <div class="box-body">
-
+<form>
        <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
         <input type="text" class="form-control" ng-model="description" placeholder="Внеси опис">
       </div>
       <br>
-    <button class="btn  btn-success pull-right" ng-click="insertItem(description)"><i class="fa fa-floppy-o"> </i> Зачувај</button>
+    <button class="btn  btn-success pull-right" type="submit" ng-click="insertItem(description)"><i class="fa fa-floppy-o"> </i> Зачувај</button></form>
   </div><!-- /.box-body -->
 
 </div><!-- /.box -->
@@ -33,10 +33,14 @@
 <div class="box box-primary">
   <div class="box-header">
     <h3 class="box-title">Измени запис</h3>
+    <div class="input-group col-lg-6 pull-right">
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <input type="text" ng-model="search.Description" class=" form-control pull-right" placeholder="Пребарај...">
+    </div>
   </div>
   <div class="box-body">
     <table ng-table="tableParams" class="table table-bordered">
-      <tr ng-repeat="user in $data" >
+      <tr ng-repeat="user in $data | filter:search">
         <td data-title="'Опис'" header-class="headerTable">
           <span ng-if="!user.edit">{{user.Description}}</span>
           <div ng-if="user.edit"><input class="form-control" type="text" ng-model="user.Description" /></div>
