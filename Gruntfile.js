@@ -18,7 +18,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    docs: 'docs'
   };
 
   // Define the configuration for all the tasks
@@ -106,6 +107,21 @@ module.exports = function (grunt) {
           }
         }
       },
+      docs: {
+                options: {
+                    port: 9002,
+                    middleware: function (connect) {
+                        return [
+                            connect().use(
+                                '/bower_components',
+                                connect.static('./bower_components')
+                            ),
+                            connect.static(appConfig.docs)
+                        ];
+                    },
+                    keepalive: true
+                }
+            },
       dist: {
         options: {
           open: true,
@@ -146,7 +162,8 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      docs: 'docs'
     },
 
     // Add vendor prefixed styles
@@ -386,7 +403,23 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
+
+    // NgDoc Settings
+    ngdocs: {
+            options: {
+                dest: 'docs',
+                scripts: ['bower_components/angular/angular.min.js', 'bower_components/angular-animate/angular-animate.min.js'],
+                html5Mode: false
+            },
+            api: {
+                src: ['app/**/*.js'],
+                title: 'API Documentation'
+            }
+        }
+
+
+
   });
 
 
@@ -441,4 +474,11 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('docs', [
+        'clean:docs',
+        'ngdocs',
+        'connect:docs'
+    ]);
+
 };
