@@ -11,11 +11,13 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+  <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link href="styles/AdminLTE.min.css" rel="stylesheet" type="text/css" />
   <link href="styles/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+  <link href="styles/main.css" rel="stylesheet" type="text/css" />
   <!-- endbuild -->
 
   <!-- FontAwesome 4.3.0 -->
@@ -121,10 +123,15 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu">
+        <ul class="sidebar-menu"  ng-controller="HeaderCtrl">
           <li class="header">ГЛАВНО МЕНИ</li>
 
-          <li><a href="#/healtstatustype">
+          <li ng-class="{ active: isActive('/')}"><a href="#/">
+              <i class="fa fa-home"></i> <span>Дома</span>
+          </a></li>
+
+          <li ng-class="{ active: isActive('/healtstatustype')}">
+          <a href="#/healtstatustype">
               <i class="fa fa-h-square"></i> <span>Healt Status Type</span>
           </a></li>
 
@@ -148,13 +155,14 @@
     <div class="content-wrapper">
 
       <div ng-view=""></div>
-
+      <div class="clearfix"></div>
     </div>
+
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
+          <b>Верзија</b> 1.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2014-2015</strong> All rights reserved.
       </footer>
   </div>
 
@@ -174,6 +182,7 @@
   <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
   <script src="bower_components/angular-daterangepicker/js/angular-daterangepicker.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -183,6 +192,7 @@
   <script src="scripts/controllers/about.js"></script>
   <script src="scripts/controllers/healtstatustype.js"></script>
   <script src="scripts/controllers/position.js"></script>
+  <script src="scripts/controllers/header.js"></script>
   <!-- endbuild -->
 
 </body>

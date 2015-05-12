@@ -8,9 +8,9 @@
  * Controller of the unicefApp
  */
  angular.module('unicefApp')
- .controller('HealtstatustypeCtrl', function ($scope, ngTableParams, $http) {
+ .controller('HealtstatustypeCtrl', function ($scope, ngTableParams, $http ,$route) {
 
-  $scope.data = [];
+          $scope.data = [];
 
   $http.get('http://localhost:58401/api/Test').
   success(function(data, status, headers, config) {
@@ -35,7 +35,7 @@
     // called asynchronously if an error occurs
     // or server returns response with an error status.
 
-  });     
+  });
 
 
   $scope.deleteItem = function(id){
@@ -48,6 +48,7 @@
     for (var i = $scope.data.length - 1; i >= 0; i--) {
       if($scope.data[i].HealthStatusTypeId == id){
         $scope.data.splice(i, 1);
+        $route.reload();
       }
     };
 
@@ -56,7 +57,7 @@
     // called asynchronously if an error occurs
     // or server returns response with an error status.
 
-  }); 
+  });
 
 
   }
@@ -75,7 +76,7 @@
     // called asynchronously if an error occurs
     // or server returns response with an error status.
     console.log(status);
-  }); 
+  });
   }
 
   $scope.insertItem = function(description){
@@ -94,6 +95,7 @@
     success(function(data, status, headers, config) {
     // this callback will be called asynchronously
     // when the response is available
+    $route.reload();
     $scope.data.push(description);
     // $scope.description = "";
 
@@ -102,7 +104,7 @@
     // called asynchronously if an error occurs
     // or server returns response with an error status.
     console.log(status);
-  }); 
+  });
 
   }
 

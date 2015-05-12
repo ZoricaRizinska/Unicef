@@ -1,4 +1,3 @@
-
 <section class="content-header">
   <h1>
     Healt Status Type
@@ -25,7 +24,7 @@
         <input type="text" class="form-control" ng-model="description" placeholder="Внеси опис">
       </div>
       <br>
-    <button class="btn  btn-success" ng-click="insertItem(description)"><i class="fa fa-floppy-o"></i> Зачувај</button>
+    <button class="btn  btn-success pull-right" ng-click="insertItem(description)"><i class="fa fa-floppy-o"> </i> Зачувај</button>
   </div><!-- /.box-body -->
 
 </div><!-- /.box -->
@@ -37,7 +36,7 @@
   </div>
   <div class="box-body">
     <table ng-table="tableParams" class="table table-bordered">
-      <tr ng-repeat="user in data">
+      <tr ng-repeat="user in $data">
         <td data-title="'Опис'">
           <span ng-if="!user.edit">{{user.Description}}</span>
           <div ng-if="user.edit"><input class="form-control" type="text" ng-model="user.Description" /></div>
@@ -52,5 +51,4 @@
   </div>
 </div>
 </div>
-
 </section><!-- /.content -->

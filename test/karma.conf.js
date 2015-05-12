@@ -36,6 +36,7 @@ module.exports = function(config) {
       'bower_components/bootstrap-daterangepicker/daterangepicker.js',
       'bower_components/angular-daterangepicker/js/angular-daterangepicker.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'daterangepicker',
     'ui.bootstrap',
+    'angular-loading-bar',
     'ngTable'
   ])
   .config(function ($routeProvider) {
@@ -37,7 +38,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.includeSpinner = false;
+  }]);
 
 
 
