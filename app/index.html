@@ -1,0 +1,189 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title>Unicef</title>
+  <meta name="description" content="">
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link href="styles/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+  <link href="styles/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+  <!-- endbuild -->
+
+  <!-- FontAwesome 4.3.0 -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Ionicons 2.0.0 -->
+  <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+<!-- put sidebar-mini on body for mini sidebar -->
+<body class="skin-blue" ng-app="unicefApp">
+
+  <div class="wrapper">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="#/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>Г</b>МК</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Градинки </b>МК</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="images/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                <span class="hidden-xs">BJ</span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                  <p>
+                    BJ - Администратор
+                    <small>---</small>
+                  </p>
+                </li>
+                <!-- Menu Body -->
+                <!-- <li class="user-body">
+                  <div class="col-xs-4 text-center">
+                    <a href="">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="">Friends</a>
+                  </div>
+                </li> -->
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="" class="btn btn-default btn-flat">Мој Профил</a>
+                  </div>
+                  <div class="pull-right">
+                    <a href="" class="btn btn-default btn-flat">Одјави се</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image" />
+          </div>
+          <div class="pull-left info">
+            <p>BJ</p>
+
+            <a href=""><i class="fa fa-circle text-success"></i> Администратор</a>
+          </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Пребарај..."/>
+            <span class="input-group-btn">
+              <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+          <li class="header">ГЛАВНО МЕНИ</li>
+
+          <li><a href="#/healtstatustype">
+              <i class="fa fa-h-square"></i> <span>Healt Status Type</span>
+          </a></li>
+
+          <li class="treeview">
+            <a href="">
+              <i class="fa fa-dashboard"></i> <span>Ниво 1</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href=""><i class="fa fa-circle-o"></i> Ниво 2</a></li>
+              <li><a href=""><i class="fa fa-circle-o"></i> Ниво 2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+      <div ng-view=""></div>
+
+    </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 2.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+      </footer>
+  </div>
+
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="bower_components/angular-daterangepicker/js/angular-daterangepicker.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/healtstatustype.js"></script>
+  <script src="scripts/controllers/position.js"></script>
+  <!-- endbuild -->
+
+</body>
+</html>

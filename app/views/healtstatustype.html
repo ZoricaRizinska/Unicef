@@ -1,0 +1,56 @@
+
+<section class="content-header">
+  <h1>
+    Healt Status Type
+    <small> </small>
+  </h1>
+<!--   <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Examples</a></li>
+    <li class="active">Blank page</li>
+  </ol> -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class=" col-lg-6 ">
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">Додади запис</h3>
+      </div>
+      <div class="box-body">
+
+       <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+        <input type="text" class="form-control" ng-model="description" placeholder="Внеси опис">
+      </div>
+      <br>
+    <button class="btn  btn-success" ng-click="insertItem(description)"><i class="fa fa-floppy-o"></i> Зачувај</button>
+  </div><!-- /.box-body -->
+
+</div><!-- /.box -->
+</div>
+<div class="col-lg-12">
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Измени запис</h3>
+  </div>
+  <div class="box-body">
+    <table ng-table="tableParams" class="table table-bordered">
+      <tr ng-repeat="user in data">
+        <td data-title="'Опис'">
+          <span ng-if="!user.edit">{{user.Description}}</span>
+          <div ng-if="user.edit"><input class="form-control" type="text" ng-model="user.Description" /></div>
+        </td>
+        <td data-title="'Акции'" width="150" class="text-center">
+          <a ng-if="!user.edit" href="" class="btn btn-primary btn-xs" ng-click="user.edit = true">Измени</a>
+          <a ng-if="user.edit" href="" class="btn btn-success btn-xs" ng-click="user.edit = false; updateItem(user)">Зачувај</a>
+          <a href="" class="btn btn-danger btn-xs" ng-click="deleteItem(user.HealthStatusTypeId)">Избриши</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+
+</section><!-- /.content -->
