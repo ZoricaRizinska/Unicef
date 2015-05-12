@@ -3,4 +3,11 @@
   height: 3px;
 }
 
+.ng-table-counts {
+  margin-top: 15px;
+}
+.ng-table th.headerTable {
+    background: #99CCFF !important;
+    text-align: left;
+}
 
