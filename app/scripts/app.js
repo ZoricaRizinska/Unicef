@@ -35,6 +35,10 @@ angular
         templateUrl: 'views/healtstatustype.html',
         controller: 'HealtstatustypeCtrl'
       })
+      .when('/position', {
+        templateUrl: 'views/position.html',
+        controller: 'PositionCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

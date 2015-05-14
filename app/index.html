@@ -55,14 +55,14 @@
             <li class="dropdown user user-menu">
               <a href="" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="images/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                <span class="hidden-xs">BJ</span>
+                <span class="hidden-xs">Корисник</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
                   <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image" />
                   <p>
-                    BJ - Администратор
+                    Корисник - Администратор
                     <small>---</small>
                   </p>
                 </li>
@@ -107,7 +107,7 @@
             <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image" />
           </div>
           <div class="pull-left info">
-            <p>BJ</p>
+            <p>Корисник</p>
 
             <a href=""><i class="fa fa-circle text-success"></i> Администратор</a>
           </div>
@@ -133,6 +133,10 @@
           <li ng-class="{ active: isActive('/healtstatustype')}">
           <a href="#/healtstatustype">
               <i class="fa fa-h-square"></i> <span>Healt Status Type</span>
+          </a></li>
+          <li ng-class="{ active: isActive('/position')}">
+          <a href="#/position">
+              <i class="fa fa-h-square"></i> <span>Position</span>
           </a></li>
 
           <li class="treeview">
@@ -194,6 +198,7 @@
   <script src="scripts/controllers/position.js"></script>
   <script src="scripts/controllers/header.js"></script>
   <script src="scripts/directives/ng-realy.js"></script>
+  <script src="scripts/services/healthstatustype.js"></script>
   <!-- endbuild -->
 
 </body>
