@@ -3,11 +3,7 @@
     Position
     <small> </small>
   </h1>
-<!--   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Examples</a></li>
-    <li class="active">Blank page</li>
-  </ol> -->
+
 </section>
 
 <!-- Main content -->
@@ -39,16 +35,16 @@
         </div>
       </div>
       <div class="box-body">
-        <table ng-table="tableParams" class="table table-bordered">
-          <tr ng-repeat="user in $data | filter:search">
-            <td data-title="'Редовност'" width="10" header-class="headerTable">
-              <div class="text-center">
-                <input type="checkbox" class="flat-green" ng-model="user.redovnost" ng-click="printdata()">
-              </div>
+                <table ng-table="tableParams" class="table table-bordered">
+          <tr ng-repeat="item in $data | filter:search">
+            <td data-title="'Опис'" header-class="headerTable">
+              <span ng-if="!item.edit">{{item.Description}}</span>
+              <div ng-if="item.edit"><input class="form-control" type="text" ng-model="item.Description" /></div>
             </td>
-            <td data-title="'Име и презиме'" header-class="headerTable">
-              <span ng-if="!user.edit">{{user.fname}} {{user.lname}}</span>
-              <div ng-if="user.edit"><input class="form-control" type="text" ng-model="user.fname" /></div>
+            <td data-title="'Акции'" width="150" class="text-center">
+              <a ng-if="!item.edit" href="" class="btn btn-primary btn-xs" ng-click="item.edit = true">Измени</a>
+              <a ng-if="item.edit" href="" class="btn btn-success btn-xs" ng-click="item.edit = false; updateItem(item)">Зачувај</a>
+              <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Description}} ?"? ng-really-click="deleteItem(item.PositionId)" >Избриши</a>
             </td>
           </tr>
         </table>

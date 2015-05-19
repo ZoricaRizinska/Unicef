@@ -12,12 +12,14 @@
   <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
   <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+  <link rel="stylesheet" href="bower_components/select2/select2.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link href="styles/AdminLTE.min.css" rel="stylesheet" type="text/css" />
   <link href="styles/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
   <link href="styles/main.css" rel="stylesheet" type="text/css" />
+  <link href="styles/select2-bootstrap.css" rel="stylesheet" type="text/css" />
   <!-- endbuild -->
 
   <!-- FontAwesome 4.3.0 -->
@@ -134,12 +136,42 @@
           <a href="#/healtstatustype">
               <i class="fa fa-h-square"></i> <span>Healt Status Type</span>
           </a></li>
+          <li ng-class="{ active: isActive('/citizenship')}">
+          <a href="#/citizenship">
+              <i class="fa fa-street-view"></i> <span>Citizenship</span>
+          </a></li>
+          <li ng-class="{ active: isActive('/employee')}">
+          <a href="#/employee">
+              <i class="fa fa-street-view"></i> <span>Employee</span>
+          </a></li>
+          <li ng-class="{ active: isActive('/agegroup')}">
+          <a href="#/agegroup">
+              <i class="fa fa-users"></i> <span>Age Group</span>
+          </a></li>
+          <li ng-class="{ active: isActive('/basicgroup')}">
+          <a href="#/basicgroup">
+              <i class="fa fa-users"></i> <span>Basic Group</span>
+          </a></li>
+          <li ng-class="{ active: isActive('/nationality')}">
+          <a href="#/nationality">
+              <i class="fa fa-flag"></i> <span>Nationality</span>
+          </a></li>
+          <li ng-class="{ active: isActive('/studyperiod')}">
+          <a href="#/studyperiod">
+              <i class="fa fa-calendar-o"></i> <span>Studyperiod</span>
+          </a></li>
+          <li ng-class="{ active: isActive('/municipality')}">
+          <a href="#/municipality">
+              <i class="fa fa-map-marker"></i> <span>Municipality</span>
+          </a></li>
           <li ng-class="{ active: isActive('/position')}">
           <a href="#/position">
-              <i class="fa fa-h-square"></i> <span>Position</span>
+              <i class="fa fa-user"></i> <span>Position</span>
           </a></li>
 
-          <li class="treeview">
+
+          <!-- МЕНИ СО ПОВЕЌЕ НИВОА -->
+          <!-- <li class="treeview">
             <a href="">
               <i class="fa fa-dashboard"></i> <span>Ниво 1</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
@@ -147,7 +179,7 @@
               <li><a href=""><i class="fa fa-circle-o"></i> Ниво 2</a></li>
               <li><a href=""><i class="fa fa-circle-o"></i> Ниво 2</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </section>
       <!-- /.sidebar -->
@@ -187,6 +219,8 @@
   <script src="bower_components/angular-daterangepicker/js/angular-daterangepicker.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+  <script src="bower_components/select2/select2.js"></script>
+  <script src="bower_components/angular-ui-select2/src/select2.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -198,6 +232,13 @@
   <script src="scripts/controllers/position.js"></script>
   <script src="scripts/controllers/header.js"></script>
   <script src="scripts/directives/ng-realy.js"></script>
+  <script src="scripts/controllers/citizenship.js"></script>
+  <script src="scripts/controllers/agegroup.js"></script>
+  <script src="scripts/controllers/basicgroup.js"></script>
+  <script src="scripts/controllers/studyperiod.js"></script>
+  <script src="scripts/controllers/nationality.js"></script>
+  <script src="scripts/controllers/municipality.js"></script>
+  <script src="scripts/controllers/employee.js"></script>
   <!-- endbuild -->
 
 </body>

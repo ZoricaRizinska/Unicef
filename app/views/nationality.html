@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    Healt Status Type
+    Nationality
     <small> </small>
   </h1>
 </section>
@@ -43,7 +43,7 @@
             <td data-title="'Акции'" width="150" class="text-center">
             <a ng-if="!item.edit" href="" class="btn btn-primary btn-xs" ng-click="item.edit = true">Измени</a>
             <a ng-if="item.edit" href="" class="btn btn-success btn-xs" ng-click="item.edit = false; updateItem(item)">Зачувај</a>
-            <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Description}} ?"? ng-really-click="deleteItem(item.HealthStatusTypeId)" >Избриши</a>
+            <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Description}} ?"? ng-really-click="deleteItem(item.NationalityId)" >Избриши</a>
             </td>
           </tr>
         </table>

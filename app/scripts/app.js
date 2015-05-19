@@ -19,6 +19,7 @@ angular
     'daterangepicker',
     'ui.bootstrap',
     'angular-loading-bar',
+    'ui.select2',
     'ngTable'
   ])
   .config(function ($routeProvider) {
@@ -35,9 +36,37 @@ angular
         templateUrl: 'views/healtstatustype.html',
         controller: 'HealtstatustypeCtrl'
       })
-      .when('/position', {
+      .when('/citizenship', {
+        templateUrl: 'views/citizenship.html',
+        controller: 'CitizenshipCtrl'
+      })
+      .when('/studyperiod', {
+        templateUrl: 'views/studyperiod.html',
+        controller: 'StudyperiodCtrl'
+      })
+      .when('/agegroup', {
+        templateUrl: 'views/agegroup.html',
+        controller: 'AgegroupCtrl'
+      })
+      .when('/basicgroup', {
+        templateUrl: 'views/basicgroup.html',
+        controller: 'BasicgroupCtrl'
+      })
+      .when('/municipality', {
+        templateUrl: 'views/municipality.html',
+        controller: 'MunicipalityCtrl'
+      })
+       .when('/position', {
         templateUrl: 'views/position.html',
         controller: 'PositionCtrl'
+      })
+      .when('/employee', {
+        templateUrl: 'views/employee.html',
+        controller: 'EmployeeCtrl'
+      })
+      .when('/nationality', {
+        templateUrl: 'views/nationality.html',
+        controller: 'NationalityCtrl'
       })
       .otherwise({
         redirectTo: '/'

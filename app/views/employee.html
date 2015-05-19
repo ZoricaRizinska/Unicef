@@ -1,0 +1,140 @@
+<section class="content-header">
+  <h1>
+    Employee
+    <small> Полињата означени со ѕвездичка (*) се задолжителни </small>
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class=" col-lg-12 ">
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">Додади запис</h3>
+      </div>
+      <div class="box-body">
+
+      <form name="form">
+
+        <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input type="text" required class="form-control" ng-model="employee.UniqueId" placeholder="Внеси ЕМБГ">
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+           <div class="form-group">
+                <select class="form-control" ui-select2 ng-model="employee.Gender" data-placeholder="Внеси пол">
+                <option></option>
+                <option value="false">Машки</option>
+                <option value="true">Женски</option>
+                </select>
+              </div>
+        </div>
+
+        <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input type="text" required class="form-control" ng-model="employee.Name" placeholder="Внеси име">
+          </div><br>
+        </div>
+
+        <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input type="text" required class="form-control" ng-model="employee.Surname" placeholder="Внеси презиме">
+          </div>  <br>
+        </div>
+
+        <!-- <div class="col-md-6">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="employee.BirthDate" is-open="opened"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Затвори" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div> -->
+
+        <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input type="text" class="form-control" ng-model="employee.BirthPlace" placeholder="Внеси место на раѓање">
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+           <div class="form-group">
+                <select class="form-control" ui-select2 ng-model="employee.NationalityId" data-placeholder="Внеси националност">
+                <option></option>
+                  <option ng-repeat="item in nationality" value="{{item.NationalityId}}">{{item.Description}}</option>
+                </select>
+              </div>
+
+        </div>
+
+        <div class="col-lg-6">
+           <div class="form-group">
+                <select class="form-control" ui-select2 ng-model="employee.CitizenshipId" data-placeholder="Внеси државјанство">
+                <option></option>
+                  <option ng-repeat="item in citizenship" value="{{item.CitizenshipId}}">{{item.Description}}</option>
+                </select>
+              </div>
+
+        </div>
+
+        <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input ng-click="click()" type="text"  class="form-control" ng-model="employee.CurrentlyLivingCity" placeholder="Внеси место на живеење">
+          </div><br>
+        </div>
+
+        <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input type="text"  class="form-control" ng-model="employee.CurrentlyLivingStreetNo" placeholder="Внеси улица на живеење">
+          </div><br>
+        </div>
+
+        <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input type="tel"  class="form-control" ng-model="employee.Telephone" placeholder="Внеси телефон">
+          </div><br>
+        </div>
+        <div class="col-lg-6">
+        <button class="btn btn-block  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(employee)"><i class="fa fa-floppy-o"> </i> Зачувај</button>
+        </form>
+        </div>
+      </div><!-- /.box-body -->
+
+    </div><!-- /.box -->
+  </div>
+  <div class="col-lg-12">
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Измени запис</h3>
+        <div class="input-group col-lg-6 pull-right">
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+          <input type="text" ng-model="search.Name" class=" form-control pull-right" placeholder="Пребарај...">
+        </div>
+      </div>
+      <div class="box-body">
+        <table ng-table="tableParams" class="table table-bordered">
+          <tr ng-repeat="item in $data | filter:search">
+            <td data-title="'Вработени'" header-class="headerTable">
+              <span ng-if="!item.edit">{{item.Name}}</span>
+              <div ng-if="item.edit"><input class="form-control" type="text" ng-model="item.Name" /></div>
+            </td>
+            <td data-title="'Акции'" width="150" class="text-center">
+              <a ng-if="!item.edit" href="" class="btn btn-primary btn-xs" ng-click="item.edit = true">Измени</a>
+              <a ng-if="item.edit" href="" class="btn btn-success btn-xs" ng-click="item.edit = false; updateItem(item)">Зачувај</a>
+              <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Name}} ?"? ng-really-click="deleteItem(item.EmployeeId)" >Избриши</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section><!-- /.content -->

@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc function
- * @name unicefApp.controller:PositionCtrl
+ * @name unicefApp.controller:AgegroupCtrl
  * @description
- * # PositionCtrl
+ * # AgegroupCtrl
  * Controller of the unicefApp
  */
 angular.module('unicefApp')
-  .controller('PositionCtrl', function($scope, ngTableParams, $http, $route) {
+  .controller('AgegroupCtrl', function($scope, ngTableParams, $http, $route) {
 
     $scope.data = [];
 
-    $http.get('http://localhost:2361/api/Positions').
+    $http.get('http://localhost:2361/api/AgeGroups').
     success(function(data, status, headers, config) {
       $scope.data = data;
       $scope.tableParams = new ngTableParams({
@@ -39,11 +39,16 @@ angular.module('unicefApp')
      */
     $scope.deleteItem = function(id) {
 
-      $http.delete('http://localhost:2361/api/Positions/' + id).
+      $http.delete('http://localhost:2361/api/AgeGroups/' + id).
       success(function(data, status, headers, config) {
+        for (var i = $scope.data.length - 1; i >= 0; i--) {
+          if ($scope.data[i].AgeGroupId == id) {
+            $scope.data.splice(i, 1);
             $route.reload();
-              }).
+          }
+        };
 
+      }).
       error(function(data, status, headers, config) {
 
       });
@@ -55,10 +60,11 @@ angular.module('unicefApp')
 
       item.Modified = $scope.today();
       item.ModifiedBy = "Developer";
+
       $http({
         method: 'PUT',
         data: item,
-        url: "http://localhost:2361/api/Positions/" + item.PositionId
+        url: "http://localhost:2361/api/AgeGroups/" + item.AgeGroupId
       }).
       success(function(data, status, headers, config) {
         console.log(status);
@@ -79,10 +85,10 @@ angular.module('unicefApp')
       $http({
         method: 'POST',
         data: item,
-        url: "http://localhost:2361/api/Positions"
+        url: "http://localhost:2361/api/AgeGroups"
       }).
       success(function(data, status, headers, config) {
-        console.log(data.PositionId);
+        console.log(data.AgeGroupId);
         $route.reload();
         $scope.data.push(description);
 
@@ -93,10 +99,10 @@ angular.module('unicefApp')
 
     }
 
-    $scope.today = function() {
+      $scope.today = function() {
       $scope.dt = new Date();
       return $scope.dt;
     };
 
-
   });
+

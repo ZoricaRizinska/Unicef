@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    Healt Status Type
+    Citizenship
     <small> </small>
   </h1>
 </section>
@@ -35,15 +35,15 @@
       </div>
       <div class="box-body">
         <table ng-table="tableParams" class="table table-bordered">
-        <tr ng-repeat="item in $data | filter:search">
+          <tr ng-repeat="item in $data | filter:search">
             <td data-title="'Опис'" header-class="headerTable">
-            <span ng-if="!item.edit">{{item.Description}}</span>
-            <div ng-if="item.edit"><input class="form-control" type="text" ng-model="item.Description" /></div>
+              <span ng-if="!item.edit">{{item.Description}}</span>
+              <div ng-if="item.edit"><input class="form-control" type="text" ng-model="item.Description" /></div>
             </td>
             <td data-title="'Акции'" width="150" class="text-center">
-            <a ng-if="!item.edit" href="" class="btn btn-primary btn-xs" ng-click="item.edit = true">Измени</a>
-            <a ng-if="item.edit" href="" class="btn btn-success btn-xs" ng-click="item.edit = false; updateItem(item)">Зачувај</a>
-            <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Description}} ?"? ng-really-click="deleteItem(item.HealthStatusTypeId)" >Избриши</a>
+              <a ng-if="!item.edit" href="" class="btn btn-primary btn-xs" ng-click="item.edit = true">Измени</a>
+              <a ng-if="item.edit" href="" class="btn btn-success btn-xs" ng-click="item.edit = false; updateItem(item)">Зачувај</a>
+              <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Description}} ?"? ng-really-click="deleteItem(item.CitizenshipId)" >Избриши</a>
             </td>
           </tr>
         </table>

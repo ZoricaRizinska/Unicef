@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc function
- * @name unicefApp.controller:PositionCtrl
+ * @name unicefApp.controller:StudyperiodCtrl
  * @description
- * # PositionCtrl
+ * # StudyperiodCtrl
  * Controller of the unicefApp
  */
 angular.module('unicefApp')
-  .controller('PositionCtrl', function($scope, ngTableParams, $http, $route) {
+  .controller('StudyperiodCtrl', function($scope, ngTableParams, $http, $route) {
 
     $scope.data = [];
 
-    $http.get('http://localhost:2361/api/Positions').
+    $http.get('http://localhost:2361/api/StudyPeriods').
     success(function(data, status, headers, config) {
       $scope.data = data;
       $scope.tableParams = new ngTableParams({
@@ -39,11 +39,16 @@ angular.module('unicefApp')
      */
     $scope.deleteItem = function(id) {
 
-      $http.delete('http://localhost:2361/api/Positions/' + id).
+      $http.delete('http://localhost:2361/api/StudyPeriods/' + id).
       success(function(data, status, headers, config) {
+        for (var i = $scope.data.length - 1; i >= 0; i--) {
+          if ($scope.data[i].StudyPeriodId == id) {
+            $scope.data.splice(i, 1);
             $route.reload();
-              }).
+          }
+        };
 
+      }).
       error(function(data, status, headers, config) {
 
       });
@@ -58,7 +63,7 @@ angular.module('unicefApp')
       $http({
         method: 'PUT',
         data: item,
-        url: "http://localhost:2361/api/Positions/" + item.PositionId
+        url: "http://localhost:2361/api/StudyPeriods/" + item.StudyPeriodId
       }).
       success(function(data, status, headers, config) {
         console.log(status);
@@ -79,10 +84,10 @@ angular.module('unicefApp')
       $http({
         method: 'POST',
         data: item,
-        url: "http://localhost:2361/api/Positions"
+        url: "http://localhost:2361/api/StudyPeriods"
       }).
       success(function(data, status, headers, config) {
-        console.log(data.PositionId);
+        console.log(data.StudyPeriodId);
         $route.reload();
         $scope.data.push(description);
 

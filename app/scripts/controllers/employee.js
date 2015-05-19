@@ -2,17 +2,39 @@
 
 /**
  * @ngdoc function
- * @name unicefApp.controller:PositionCtrl
+ * @name unicefApp.controller:EmployeeCtrl
  * @description
- * # PositionCtrl
+ * # EmployeeCtrl
  * Controller of the unicefApp
  */
 angular.module('unicefApp')
-  .controller('PositionCtrl', function($scope, ngTableParams, $http, $route) {
+  .controller('EmployeeCtrl', function($scope, ngTableParams, $http, $route) {
+
+    $scope.employee = {};
+
+    $scope.nationality = [];
+    $http.get('http://localhost:2361/api/Nationalities').
+    success(function(data, status, headers, config) {
+      $scope.nationality = data;
+    }).
+    error(function(data, status, headers, config) {
+
+    });
+
+    $scope.citizenship = [];
+    $http.get('http://localhost:2361/api/Citizenships').
+    success(function(data, status, headers, config) {
+      $scope.citizenship = data;
+    }).
+    error(function(data, status, headers, config) {
+
+    });
+
+
 
     $scope.data = [];
 
-    $http.get('http://localhost:2361/api/Positions').
+    $http.get('http://localhost:2361/api/Employees').
     success(function(data, status, headers, config) {
       $scope.data = data;
       $scope.tableParams = new ngTableParams({
@@ -39,15 +61,19 @@ angular.module('unicefApp')
      */
     $scope.deleteItem = function(id) {
 
-      $http.delete('http://localhost:2361/api/Positions/' + id).
+      $http.delete('http://localhost:2361/api/Employees/' + id).
       success(function(data, status, headers, config) {
+        for (var i = $scope.data.length - 1; i >= 0; i--) {
+          if ($scope.data[i].EmployeeId == id) {
+            $scope.data.splice(i, 1);
             $route.reload();
-              }).
+          }
+        };
 
+      }).
       error(function(data, status, headers, config) {
 
       });
-
 
     }
 
@@ -58,7 +84,7 @@ angular.module('unicefApp')
       $http({
         method: 'PUT',
         data: item,
-        url: "http://localhost:2361/api/Positions/" + item.PositionId
+        url: "http://localhost:2361/api/Employees/" + item.EmployeeId
       }).
       success(function(data, status, headers, config) {
         console.log(status);
@@ -68,9 +94,15 @@ angular.module('unicefApp')
       });
     }
 
-    $scope.insertItem = function(description) {
-      var item = {};
-      item.Description = description;
+    $scope.insertItem = function(item) {
+
+      $scope.den = item.UniqueId.substr(0, 2);
+      $scope.mesec = item.UniqueId.substr(2, 2);
+      $scope.godina = "1" + item.UniqueId.substr(4, 3);
+
+      var d = $scope.godina + "-" + $scope.mesec + "-" + $scope.den;
+
+      item.BirthDate = d;
       item.Created = $scope.today();
       item.CreatedBy = "Developer";
       item.Modified = $scope.today();
@@ -79,12 +111,10 @@ angular.module('unicefApp')
       $http({
         method: 'POST',
         data: item,
-        url: "http://localhost:2361/api/Positions"
+        url: "http://localhost:2361/api/Employees"
       }).
       success(function(data, status, headers, config) {
-        console.log(data.PositionId);
         $route.reload();
-        $scope.data.push(description);
 
       }).
       error(function(data, status, headers, config) {
@@ -93,10 +123,12 @@ angular.module('unicefApp')
 
     }
 
+    //DATEPICKER
+
     $scope.today = function() {
-      $scope.dt = new Date();
-      return $scope.dt;
+      return new Date();
     };
+
 
 
   });
