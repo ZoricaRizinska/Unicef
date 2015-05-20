@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
   <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
   <link rel="stylesheet" href="bower_components/select2/select2.css" />
+  <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -29,213 +30,11 @@
 
 </head>
 <!-- put sidebar-mini on body for mini sidebar -->
-<body class="skin-blue" ng-app="unicefApp">
+<body class="skin-blue " ng-app="unicefApp">
 
-  <div class="wrapper">
-
-    <header class="main-header">
-      <!-- Logo -->
-      <a href="#/" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>Г</b>МК</span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Градинки </b>МК</span>
-      </a>
-      <!-- Header Navbar: style can be found in header.less -->
-      <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        <a href="" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-
-            <!-- User Account: style can be found in dropdown.less -->
-            <li class="dropdown user user-menu">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="images/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                <span class="hidden-xs">Корисник</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- User image -->
-                <li class="user-header">
-                  <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                  <p>
-                    Корисник - Администратор
-                    <small>---</small>
-                  </p>
-                </li>
-                <!-- Menu Body -->
-                <!-- <li class="user-body">
-                  <div class="col-xs-4 text-center">
-                    <a href="">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="">Friends</a>
-                  </div>
-                </li> -->
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="" class="btn btn-default btn-flat">Мој Профил</a>
-                  </div>
-                  <div class="pull-right">
-                    <a href="" class="btn btn-default btn-flat">Одјави се</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <!-- =============================================== -->
-
-    <!-- Left side column. contains the sidebar -->
-    <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-          <div class="pull-left image">
-            <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image" />
-          </div>
-          <div class="pull-left info">
-            <p>Корисник</p>
-
-            <a href=""><i class="fa fa-circle text-success"></i> Администратор</a>
-          </div>
-        </div>
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Пребарај..."/>
-            <span class="input-group-btn">
-              <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-            </span>
-          </div>
-        </form>
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu"  ng-controller="HeaderCtrl">
-          <li class="header">ГЛАВНО МЕНИ</li>
-
-          <li ng-class="{ active: isActive('/')}"><a href="#/">
-              <i class="fa fa-home"></i> <span>Дома</span>
-          </a></li>
-
-
-          <li ng-class="{ active: isActive('/employee')}">
-          <a href="#/employee">
-              <i class="fa fa-street-view"></i> <span>Employee</span>
-          </a></li>
-
-
-           <li ng-class="{ active: isActive('/kindergarden')}">
-          <a href="#/kindergarden">
-              <i class="fa fa-map-marker"></i> <span>Kindergarden</span>
-          </a></li>
-
-
-          <li class="treeview">
-              <a href="">
-                <i class="fa fa-laptop"></i>
-                <span>Шифрарници</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-
-                <li ng-class="{ active: isActive('/position')}">
-                  <a href="#/position">
-                    <i class="fa fa-user"></i> <span>Position</span>
-                  </a>
-                </li>
-
-                <li ng-class="{ active: isActive('/municipality')}">
-                  <a href="#/municipality">
-                    <i class="fa fa-map-marker"></i> <span>Municipality</span>
-                  </a>
-                </li>
-
-                <li ng-class="{ active: isActive('/agegroup')}">
-                  <a href="#/agegroup">
-                    <i class="fa fa-users"></i> <span>Age Group</span>
-                  </a>
-                </li>
-
-                <li ng-class="{ active: isActive('/basicgroup')}">
-                  <a href="#/basicgroup">
-                    <i class="fa fa-users"></i> <span>Basic Group</span>
-                  </a>
-                </li>
-
-                <li ng-class="{ active: isActive('/nationality')}">
-                  <a href="#/nationality">
-                    <i class="fa fa-flag"></i> <span>Nationality</span>
-                  </a>
-                </li>
-
-                <li ng-class="{ active: isActive('/healtstatustype')}">
-                  <a href="#/healtstatustype">
-                    <i class="fa fa-h-square"></i> <span>Healt Status Type</span>
-                  </a>
-                </li>
-
-                <li ng-class="{ active: isActive('/citizenship')}">
-                  <a href="#/citizenship">
-                    <i class="fa fa-street-view"></i> <span>Citizenship</span>
-                  </a>
-                </li>
-
-                <li ng-class="{ active: isActive('/studyperiod')}">
-                  <a href="#/studyperiod">
-                      <i class="fa fa-calendar-o"></i> <span>Studyperiod</span>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-
-
-          <!-- МЕНИ СО ПОВЕЌЕ НИВОА -->
-          <!-- <li class="treeview">
-            <a href="">
-              <i class="fa fa-dashboard"></i> <span>Ниво 1</span> <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i> Ниво 2</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i> Ниво 2</a></li>
-            </ul>
-          </li> -->
-        </ul>
-      </section>
-      <!-- /.sidebar -->
-    </aside>
-
-    <!-- =============================================== -->
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
 
       <div ng-view=""></div>
-      <div class="clearfix"></div>
-    </div>
 
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Верзија</b> 1.0
-        </div>
-        <strong>Copyright &copy; 2014-2015</strong> All rights reserved.
-      </footer>
-  </div>
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
@@ -257,6 +56,8 @@
   <script src="bower_components/select2/select2.js"></script>
   <script src="bower_components/angular-ui-select2/src/select2.js"></script>
   <script src="bower_components/angular-mask/dist/ngMask.js"></script>
+  <script src="bower_components/Chart.js/Chart.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -275,8 +76,9 @@
   <script src="scripts/controllers/nationality.js"></script>
   <script src="scripts/controllers/municipality.js"></script>
   <script src="scripts/controllers/employee.js"></script>
-  <script src="scripts/controllers/kindergarden.js"></script>
   <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/controllers/kindergarden.js"></script>
+  <script src="scripts/controllers/financesourcetype.js"></script>
   <!-- endbuild -->
 
 </body>

@@ -1,5 +1,3 @@
-
-
     <header class="main-header">
       <!-- Logo -->
       <a href="#/" class="logo">
@@ -112,7 +110,7 @@
           </a></li>
 
 
-          <li class="treeview">
+          <li class="treeview" ng-class="{ active: isSifrarnik()}">
               <a href="">
                 <i class="fa fa-laptop"></i>
                 <span>Шифрарници</span>
@@ -141,6 +139,12 @@
                 <li ng-class="{ active: isActive('/basicgroup')}">
                   <a href="#/basicgroup">
                     <i class="fa fa-users"></i> <span>Basic Group</span>
+                  </a>
+                </li>
+
+                <li ng-class="{ active: isActive('/financesourcetype')}">
+                  <a href="#/financesourcetype">
+                    <i class="fa fa-users"></i> <span>Finance source type</span>
                   </a>
                 </li>
 
@@ -186,3 +190,5 @@
       </section>
       <!-- /.sidebar -->
     </aside>
+
+  <script src="/scripts/LTEapp.js"></script>

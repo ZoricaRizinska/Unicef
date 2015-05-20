@@ -1,4 +1,11 @@
-<section class="content-header">
+<div class="wrapper">
+
+  <ng-include src="'views/header.html'"></ng-include>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+  <section class="content-header">
   <h1>
     Municipality
     <small> </small>
@@ -24,7 +31,7 @@
           <input type="text" required class="form-control" ng-model="code" placeholder="Внеси код">
         </div>
         <br>
-        <button class="btn  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(description, code)"><i class="fa fa-floppy-o"> </i> Зачувај</button></form>
+        <button class="btn  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(description, code)"><i class="fa fa-floppy-o"> </i> Зачувај</button></form><div class="clearfix"></div>
       </div><!-- /.box-body -->
 
     </div><!-- /.box -->
@@ -60,3 +67,8 @@
     </div>
   </div>
 </section><!-- /.content -->
+</div>
+
+  <ng-include src="'views/footer.html'"></ng-include>
+
+</div>

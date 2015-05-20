@@ -1,4 +1,11 @@
-<section class="content-header">
+<div class="wrapper">
+
+  <ng-include src="'views/header.html'"></ng-include>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+  <section class="content-header">
   <h1>
     Employee
     <small></small>
@@ -96,7 +103,7 @@
         <div class="col-lg-6 pull-right">
         <button class="btn  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(employee)"><i class="fa fa-floppy-o"> </i> Зачувај</button>
         </div>
-        </form>
+        </form><div class="clearfix">
         </div>
       </div><!-- /.box-body -->
 
@@ -169,3 +176,8 @@
     </div>
   </div>
 </section><!-- /.content -->
+</div>
+
+  <ng-include src="'views/footer.html'"></ng-include>
+
+</div>

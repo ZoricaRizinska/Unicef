@@ -14,4 +14,9 @@ angular.module('unicefApp')
       'AngularJS',
       'Karma'
     ];
+
+    $scope.labels = ["Машки", "Женски"];
+    $scope.data = [450, 500];
+
+
   });

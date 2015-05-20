@@ -2,42 +2,18 @@
 
 /**
  * @ngdoc function
- * @name unicefApp.controller:KindergardenCtrl
+ * @name unicefApp.controller:FinancesourcetypeCtrl
  * @description
- * # KindergardenCtrl
+ * # FinancesourcetypeCtrl
  * Controller of the unicefApp
  */
 angular.module('unicefApp')
-  .controller('KindergardenCtrl',  function($scope, ngTableParams, $http, $route) {
-
-    $scope.title = "Kindergarden";
-
-    $scope.kindergarden = {};
-
-    $scope.municipality = [];
-    $http.get('http://localhost:2361/api/Municipalities').
-    success(function(data, status, headers, config) {
-      $scope.municipality = data;
-    }).
-    error(function(data, status, headers, config) {
-
-    });
-
-    $scope.employee = [];
-    $http.get('http://localhost:2361/api/Employees').
-    success(function(data, status, headers, config) {
-      $scope.employee = data;
-    }).
-    error(function(data, status, headers, config) {
-
-    });
-
-
+  .controller('FinancesourcetypeCtrl', function($scope, ngTableParams, $http, $route) {
 
     $scope.data = [];
 
-    $http.get('http://localhost:2361/api/Kindergardens').
-    success(function(data, status, headers, config) {
+    $http.get('http://localhost:2361/api/FinanceSourceTypes').
+  success(function(data, status, headers, config) {
       $scope.data = data;
       $scope.tableParams = new ngTableParams({
         page: 1, // show first page
@@ -63,19 +39,20 @@ angular.module('unicefApp')
      */
     $scope.deleteItem = function(id) {
 
-      $http.delete('http://localhost:2361/api/Kindergardens/' + id).
+      $http.delete('http://localhost:2361/api/FinanceSourceTypes/' + id).
       success(function(data, status, headers, config) {
         for (var i = $scope.data.length - 1; i >= 0; i--) {
-          if ($scope.data[i].EmployeeId == id) {
+          if ($scope.data[i].FinanceSourceTypeId == id) {
             $scope.data.splice(i, 1);
             $route.reload();
           }
         };
 
-      })
+      }).
       error(function(data, status, headers, config) {
 
       });
+
 
     }
 
@@ -83,10 +60,11 @@ angular.module('unicefApp')
 
       item.Modified = $scope.today();
       item.ModifiedBy = "Developer";
+
       $http({
         method: 'PUT',
         data: item,
-        url: "http://localhost:2361/api/Kindergardens/" + item.KindergardenId
+        url: "http://localhost:2361/api/FinanceSourceTypes/" + item.FinanceSourceTypeId
       }).
       success(function(data, status, headers, config) {
         console.log(status);
@@ -96,21 +74,24 @@ angular.module('unicefApp')
       });
     }
 
-    $scope.insertItem = function(item) {
-      item.PlaceId=1;
-
-      item.Created = $scope.today();
+    $scope.insertItem = function(name,description) {
+      var item = {};
+      item.Name = name;
+      item.Description = description;
       item.CreatedBy = "Developer";
-      item.Modified = $scope.today();
+      item.Created = $scope.today();
       item.ModifiedBy = "Developer";
+      item.Modified = $scope.today();
 
-    console.log(item);
+    // console.log(item);
+
       $http({
         method: 'POST',
         data: item,
-        url: "http://localhost:2361/api/Kindergardens"
+        url: "http://localhost:2361/api/FinanceSourceTypes"
       }).
       success(function(data, status, headers, config) {
+
         $route.reload();
 
       }).
@@ -120,11 +101,9 @@ angular.module('unicefApp')
 
     }
 
-    //DATEPICKER
-
-    $scope.today = function() {
-      return new Date();
+      $scope.today = function() {
+      $scope.dt = new Date();
+      return $scope.dt;
     };
-
 
   });

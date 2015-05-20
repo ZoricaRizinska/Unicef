@@ -4,10 +4,9 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
-  <section class="content-header">
+<section class="content-header">
   <h1>
-    Nationality
+    Finance Source Type
     <small> </small>
   </h1>
 </section>
@@ -23,10 +22,16 @@
         <form name="form">
          <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+          <input type="text" required class="form-control" ng-model="name" placeholder="внеси име">
+        </div>
+        <br>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
           <input type="text" required class="form-control" ng-model="description" placeholder="Внеси опис">
         </div>
         <br>
-        <button class="btn  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(description)"><i class="fa fa-floppy-o"> </i> Зачувај</button></form><div class="clearfix"></div>
+        <button class="btn  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(name,description)"><i class="fa fa-floppy-o"> </i> Зачувај</button></form><div class="clearfix"></div>
+
       </div><!-- /.box-body -->
 
     </div><!-- /.box -->
@@ -37,12 +42,16 @@
         <h3 class="box-title">Измени запис</h3>
         <div class="input-group col-lg-6 pull-right">
           <span class="input-group-addon"><i class="fa fa-search"></i></span>
-          <input type="text" ng-model="search.Description" class=" form-control pull-right" placeholder="Пребарај...">
+          <input type="text" ng-model="search.Name" class=" form-control pull-right" placeholder="Пребарај...">
         </div>
       </div>
       <div class="box-body">
         <table ng-table="tableParams" class="table table-bordered">
         <tr ng-repeat="item in $data | filter:search">
+            <td data-title="'Име'" width="250" header-class="headerTable">
+            <span ng-if="!item.edit">{{item.Name}}</span>
+            <div ng-if="item.edit"><input class="form-control" type="text" ng-model="item.Name" /></div>
+            </td>
             <td data-title="'Опис'" header-class="headerTable">
             <span ng-if="!item.edit">{{item.Description}}</span>
             <div ng-if="item.edit"><input class="form-control" type="text" ng-model="item.Description" /></div>
@@ -50,7 +59,7 @@
             <td data-title="'Акции'" width="150" class="text-center">
             <a ng-if="!item.edit" href="" class="btn btn-primary btn-xs" ng-click="item.edit = true">Измени</a>
             <a ng-if="item.edit" href="" class="btn btn-success btn-xs" ng-click="item.edit = false; updateItem(item)">Зачувај</a>
-            <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Description}} ?"? ng-really-click="deleteItem(item.NationalityId)" >Избриши</a>
+            <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Name}} ?"? ng-really-click="deleteItem(item.FinanceSourceTypeId)" >Избриши</a>
             </td>
           </tr>
         </table>
@@ -58,6 +67,7 @@
     </div>
   </div>
 </section><!-- /.content -->
+
 </div>
 
   <ng-include src="'views/footer.html'"></ng-include>
