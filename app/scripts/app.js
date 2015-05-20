@@ -20,6 +20,7 @@ angular
     'ui.bootstrap',
     'angular-loading-bar',
     'ui.select2',
+    'ngMask',
     'ngTable'
   ])
   .config(function ($routeProvider) {
@@ -63,6 +64,14 @@ angular
       .when('/employee', {
         templateUrl: 'views/employee.html',
         controller: 'EmployeeCtrl'
+      })
+        .when('/kindergarden', {
+        templateUrl: 'views/kindergarden.html',
+        controller: 'KindergardenCtrl'
+      })
+        .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .when('/nationality', {
         templateUrl: 'views/nationality.html',

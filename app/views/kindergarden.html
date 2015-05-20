@@ -1,0 +1,199 @@
+
+<section class="content-header">
+  <h1>
+    Kindergarden
+    <small></small>
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class=" col-lg-12 ">
+    <div class="box box-success">
+      <div class="box-header">
+        <h3 class="box-title">Додади запис</h3>
+      </div>
+      <div class="box-body">
+
+        <form name="form">
+
+
+
+          <div class="col-lg-6">
+           <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+            <input type="text" required class="form-control" ng-model="kindergarden.Name" placeholder="Внеси име на градинка">
+          </div><br>
+        </div>
+
+
+        <div class="col-lg-6">
+          <select class="form-control" ui-select2 ng-model="kindergarden.MunicipalityId" data-placeholder="Внеси општина">
+            <option></option>
+            <option ng-repeat="item in municipality" value="{{item.MunicipalityId}}">{{item.Description}}</option>
+          </select>
+        <br class="visible-lg">
+      </div>
+
+      <div class="col-lg-6">
+       <div class="form-group">
+        <select class="form-control" ui-select2 ng-model="kindergarden.DirectorId" data-placeholder="Внеси директор">
+          <option></option>
+          <option ng-repeat="item in employee" value="{{item.EmployeeId}}">{{item.Name}} {{item.Surname}} </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+     <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+      <input type="text" required class="form-control" ng-model="kindergarden.AreaInside" placeholder="Квадратура внатре">
+    </div><br>
+  </div>
+
+  <div class="col-lg-6">
+   <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+    <input type="text" required class="form-control" ng-model="kindergarden.AreaOutside" placeholder="Квадратура дворно место">
+  </div><br>
+</div>
+
+<div class="col-lg-6">
+ <div class="form-group">
+  <textarea class="form-control" rows="3" ng-model="kindergarden.BasicInventory" placeholder="Основна опрема(столчиња,маси,кујна...)"></textarea>
+</div>
+</div>
+
+<div class="col-lg-3">
+ <div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+  <input type="number" required class="form-control" ng-model="kindergarden.NumPlayroom" placeholder="Број на занимални">
+</div><br>
+</div><div class="col-lg-3">
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+  <input type="number" required class="form-control" ng-model="kindergarden.NumOffice" placeholder="Број на канцеларии">
+</div><br>
+</div><div class="col-lg-3">
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+  <input type="number" required class="form-control" ng-model="kindergarden.NumAmbulants" placeholder="Број на амбуланти">
+</div><br>
+</div><div class="col-lg-3">
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+  <input type="number" required class="form-control" ng-model="kindergarden.NumKitchen" placeholder="Број на кујни">
+</div><br>
+</div>
+
+<div class="col-lg-6">
+ <div class="form-group">
+  <textarea class="form-control" rows="3" g-model="kindergarden.OtherRooms" placeholder="Останато на број"></textarea>
+</div>
+</div>
+
+
+<div class="col-lg-6 pull-right">
+  <button class="btn  btn-success pull-right" ng-disabled="form.$invalid" type="submit" ng-click="insertItem(kindergarden)"><i class="fa fa-floppy-o"> </i> Зачувај</button>
+</div>
+</form>
+</div>
+</div><!-- /.box-body -->
+
+</div><!-- /.box -->
+
+<div class="col-lg-12">
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">Измени запис</h3>
+      <div class="input-group col-lg-6 pull-right">
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <input type="text" ng-model="search" class=" form-control pull-right" placeholder="Пребарај...">
+      </div>
+    </div>
+    <div class="box-body">
+      <table ng-table="tableParams" class="table table-bordered">
+        <tr ng-repeat="item in $data | filter:search">
+          <td data-title="'Градинки'" header-class="headerTable" ng-class="{ 'emphasis': item.edit == true }">
+            <span ng-if="!item.edit">{{item.Name}}</span>
+            <div ng-if="item.edit" style="background: #ccc;">
+
+              <div class="col-lg-4">
+                <label>Име на градинка</label>
+                <input class="form-control" type="text" ng-model="item.Name" />
+              </div>
+
+              <div class="col-lg-4">
+                <label>Општина</label>
+                <div class="form-group">
+                  <select class="form-control" ui-select2 ng-model="item.MunicipalityId">
+                    <option ng-repeat="item2 in municipality" value="{{item2.MunicipalityId}}">{{item2.Description}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <label>Директор</label>
+                <div class="form-group">
+                  <select class="form-control" ui-select2 ng-model="item.DirectorId" >
+                    <option ng-repeat="item2 in employee" value="{{item2.EmployeeId}}">{{item2.Name}} {{item2.Surname}} </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <label>Квадратура внатре</label>
+                <input class="form-control" type="text" ng-model="item.AreaInside" />
+              </div>
+
+              <div class="col-lg-4">
+                <label>Квадратура дворно место</label>
+                <input class="form-control" type="text" ng-model="item.AreaOutside" />
+              </div>
+
+              <div class="col-lg-4">
+                <label>Основна опрема</label>
+                <textarea class="form-control" rows="3" ng-model="item.BasicInventory"></textarea>
+              </div>
+
+              <div class="col-lg-3">
+                <label>Број на занимални</label>
+                <input type="number" required class="form-control" ng-model="item.NumPlayroom">
+              </div>
+
+              <div class="col-lg-3">
+                <label>Број на канцеларии</label>
+                <input type="number" required class="form-control" ng-model="item.NumOffice">
+              </div>
+
+              <div class="col-lg-3">
+                <label>Број на амбуланти</label>
+                <input type="number" required class="form-control" ng-model="item.NumAmbulants">
+              </div>
+
+              <div class="col-lg-3">
+                <label>Број на кујни</label>
+                <input type="number" required class="form-control" ng-model="item.NumKitchen">
+              </div>
+
+              <div class="col-lg-4">
+                <label>Останато на број</label>
+                <textarea class="form-control" rows="3" ng-model="item.OtherRooms"></textarea>
+              </div>
+
+
+
+            </div>
+          </td>
+          <td data-title="'Акции'" width="150" class="text-center" ng-class="{ 'emphasis': item.edit == true }">
+            <a ng-if="!item.edit" href="" class="btn btn-primary btn-xs" ng-click="item.edit = true;">Измени</a>
+            <a ng-if="item.edit" href="" class="btn btn-success btn-xs" ng-click="item.edit = false; updateItem(item)">Зачувај</a>
+            <a href="" class="btn btn-danger btn-xs" ng-really-message="Избриши го {{item.Name}} ?"? ng-really-click="deleteItem(item.KindergardenId)" >Избриши</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</section><!-- /.content -->
+

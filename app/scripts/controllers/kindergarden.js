@@ -2,29 +2,29 @@
 
 /**
  * @ngdoc function
- * @name unicefApp.controller:EmployeeCtrl
+ * @name unicefApp.controller:KindergardenCtrl
  * @description
- * # EmployeeCtrl
+ * # KindergardenCtrl
  * Controller of the unicefApp
  */
 angular.module('unicefApp')
-  .controller('EmployeeCtrl', function($scope, ngTableParams, $http, $route) {
+  .controller('KindergardenCtrl',  function($scope, ngTableParams, $http, $route) {
 
-    $scope.employee = {};
+    $scope.kindergarden = {};
 
-    $scope.nationality = [];
-    $http.get('http://localhost:2361/api/Nationalities').
+    $scope.municipality = [];
+    $http.get('http://localhost:2361/api/Municipalities').
     success(function(data, status, headers, config) {
-      $scope.nationality = data;
+      $scope.municipality = data;
     }).
     error(function(data, status, headers, config) {
 
     });
 
-    $scope.citizenship = [];
-    $http.get('http://localhost:2361/api/Citizenships').
+    $scope.employee = [];
+    $http.get('http://localhost:2361/api/Employees').
     success(function(data, status, headers, config) {
-      $scope.citizenship = data;
+      $scope.employee = data;
     }).
     error(function(data, status, headers, config) {
 
@@ -34,7 +34,7 @@ angular.module('unicefApp')
 
     $scope.data = [];
 
-    $http.get('http://localhost:2361/api/Employees').
+    $http.get('http://localhost:2361/api/Kindergardens').
     success(function(data, status, headers, config) {
       $scope.data = data;
       $scope.tableParams = new ngTableParams({
@@ -61,7 +61,7 @@ angular.module('unicefApp')
      */
     $scope.deleteItem = function(id) {
 
-      $http.delete('http://localhost:2361/api/Employees/' + id).
+      $http.delete('http://localhost:2361/api/Kindergardens/' + id).
       success(function(data, status, headers, config) {
         for (var i = $scope.data.length - 1; i >= 0; i--) {
           if ($scope.data[i].EmployeeId == id) {
@@ -70,7 +70,7 @@ angular.module('unicefApp')
           }
         };
 
-      }).
+      })
       error(function(data, status, headers, config) {
 
       });
@@ -84,7 +84,7 @@ angular.module('unicefApp')
       $http({
         method: 'PUT',
         data: item,
-        url: "http://localhost:2361/api/Employees/" + item.EmployeeId
+        url: "http://localhost:2361/api/Kindergardens/" + item.KindergardenId
       }).
       success(function(data, status, headers, config) {
         console.log(status);
@@ -95,25 +95,18 @@ angular.module('unicefApp')
     }
 
     $scope.insertItem = function(item) {
+      item.PlaceId=1;
 
-      $scope.den = item.UniqueId.substr(0, 2);
-      $scope.mesec = item.UniqueId.substr(2, 2);
-      $scope.godina = "1" + item.UniqueId.substr(4, 3);
-
-      var d = $scope.godina + "-" + $scope.mesec + "-" + $scope.den;
-
-      item.BirthDate = d;
       item.Created = $scope.today();
       item.CreatedBy = "Developer";
       item.Modified = $scope.today();
       item.ModifiedBy = "Developer";
 
-      console.log(item);
-
+    console.log(item);
       $http({
         method: 'POST',
         data: item,
-        url: "http://localhost:2361/api/Employees"
+        url: "http://localhost:2361/api/Kindergardens"
       }).
       success(function(data, status, headers, config) {
         $route.reload();
@@ -131,12 +124,5 @@ angular.module('unicefApp')
       return new Date();
     };
 
-    $scope.fixGender = function(item) {
-      if(item.Gender == false){
-        item.Gender = 0;
-      } else {
-        item.Gender = 1;
-      }
-    }
 
   });

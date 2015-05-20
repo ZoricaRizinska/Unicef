@@ -39,6 +39,7 @@ module.exports = function(config) {
       'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/select2/select2.js',
       'bower_components/angular-ui-select2/src/select2.js',
+      'bower_components/angular-mask/dist/ngMask.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
