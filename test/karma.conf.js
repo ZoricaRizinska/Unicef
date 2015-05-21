@@ -42,6 +42,9 @@ module.exports = function(config) {
       'bower_components/angular-mask/dist/ngMask.js',
       'bower_components/Chart.js/Chart.js',
       'bower_components/angular-chart.js/dist/angular-chart.js',
+      'bower_components/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
+      'bower_components/angular-md5/angular-md5.js',
+      'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

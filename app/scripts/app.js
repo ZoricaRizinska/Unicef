@@ -22,6 +22,9 @@ angular
     'ui.select2',
     'ngMask',
     'chart.js',
+    'ui.checkbox',
+    'angular-md5',
+    'toastr',
     'ngTable'
   ])
   .config(function ($routeProvider) {
@@ -57,6 +60,10 @@ angular
       .when('/municipality', {
         templateUrl: 'views/municipality.html',
         controller: 'MunicipalityCtrl'
+      })
+      .when('/forgotpassword', {
+        templateUrl: 'views/forgotpassword.html',
+        controller: 'ForgotpasswordCtrl'
       })
       .when('/financesourcetype', {
         templateUrl: 'views/financesourcetype.html',

@@ -8,10 +8,21 @@
  * Controller of the unicefApp
  */
 angular.module('unicefApp')
-  .controller('LoginCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('LoginCtrl', function ($scope, loginService, md5, $location) {
+
+
+    $scope.login = function(){
+
+      var hashPassword = md5.createHash($scope.password);
+      var username = $scope.username;
+
+      loginService.login(username, hashPassword);
+
+    }
+
+    $scope.forgotPassword = function(){
+      $location.path('/forgotpassword');
+    }
+
+
   });
